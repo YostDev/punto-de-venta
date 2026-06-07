@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Programa de Productos</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <div class="ventana">
+        <div class="inputs">
+            <input type="text" id="product-name" placeholder="Nombre del producto">
+            <input type="number" id="product-price" placeholder="Precio del producto">  
+        </div>
+        <button id="add-product-btn">Añadir Producto</button>
+        <h4 class="alerta"></h4>
+    </div>
+
+    <div class="bottom-menu">
+        <a href="inventario.html">
+            <button>
+                <i class="fa-solid fa-box"></i> </button>
+        </a>
+        <a href="index.html">
+            <button class="seleccion">
+                <i class="fa-solid fa-plus"></i>
+            </button>
+        </a>
+        <a href="ticket.html">
+            <button>
+                <i class="fa-solid fa-ticket"></i>
+            </button>
+        </a>
+    </div>
+
+    <script src="jquery.js"></script>
+    <script>
+        $('#add-product-btn').on('click', function(e) {
+            e.preventDefault();
+
+            let nombre = $('#product-name').val().trim();
+            let precio = parseFloat($('#product-price').val());
+
+            if (!nombre || isNaN(precio)) {
+                $(".alerta").text("Por favor, completa los campos correctamente.");
+                return;
+            }
+
+            let nuevoProducto = {
+                id: Date.now(),
+                nombre: nombre,
+                precio: precio
+            };
+
+            stockProductos.push(nuevoProducto);
+            localStorage.setItem('productos_stock', JSON.stringify(stockProductos));
+
+            $('#product-name').val('');
+            $('#product-price').val('');
+            
+            $(".alerta").text("¡Guardado!");
+            setTimeout(() => {
+                $(".alerta").text("");
+            }, 2000);
+        });
+    </script>
+</body>
+</html>

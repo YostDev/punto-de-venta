@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Programa de Productos</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <div class="papel">
+        <div class="ticket">
+       
+        </div>
+        <h1 id="total-precio"></h1>
+        <div class="descuento">
+            <h3>Descuento: %</h3>
+            <input type="number" id="input-descuento" placeholder="Ingrese el descuento">
+        </div>
+        <p class="cantidad">Cantidad: 0</p>
+        <button id="btn-limpiar-ticket">borrar ticket</button>
+    </div>
+
+    <div class="bottom-menu">
+        <a href="inventario.html">
+            <button>
+                <i class="fa-solid fa-box"></i> </button>
+        </a>
+        <a href="index.html">
+            <button>
+                <i class="fa-solid fa-plus"></i>
+            </button>
+        </a>
+        <a href="ticket.html">
+            <button class="seleccion">
+                <i class="fa-solid fa-ticket"></i>
+            </button>
+        </a>
+    </div>
+    <script src="jquery.js"></script>
+</body>
+</html>
