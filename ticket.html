@@ -52,7 +52,7 @@
   
   html2canvas(document.getElementById('titi')).then(canvas => {
     let link = document.createElement('a');
-    link.download = 'ticket-venta.png';
+    link.download = `ticket-${Date.now()}.png`;
     link.href = canvas.toDataURL();
     link.click();
 
