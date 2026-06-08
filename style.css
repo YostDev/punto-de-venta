@@ -1,60 +1,103 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
 
 :root {
-    --pri: #1e231e;
-    --sec: #77ada2;
+    --pri: #2e3d33;
+    --sec: #5bb65d;
     --gris: #acbcae;
     --blanco: #ffff;
-    --palido: rgba(223, 234, 223, 0.733);
+    --palido: #f7f7f7;
 }
 
 * {
     box-sizing: border-box;
     transition: 0.3s ease;
 }
+.cont-tuto {
+    width: 75%; margin: 60px auto;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 90px;
+}
+.paso {
+    display: flex; gap: 15px;
+    color: var(--pri);
+    font-size: 0.7rem;
+    align-items: center;
+}
+.icono {
+    background-color: var(--pri);
+    color: var(--blanco);
+    padding: 5px; width: 30px; height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.separador {
+    width: 3px; height: 25px;
+    margin: 15px 0 15px 16px;
+    background-color: var(--pri);
+}
+input:focus {
+    outline: solid 2px var(--sec);
+}
+button:focus {
+    outline: none;
+}
+.titulazo {
+    width: 100%; height: 100px;
+    background-color: var(--sec);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 70px 20px 50px 20px;
+}
 h2 {
-    text-align: center; color: var(--pri);
-    margin-top: 50px;
+    text-align: center; color: var(--blanco);
+    font-size: 1rem;    
 }
 .inventario {
     width: 100%;
     padding: 25px;
-    margin-bottom: 50%;
+    margin-top: -45px;
+    margin-bottom: 150px;
 }
 body {
     background-color: var(--palido);
     font-family: Poppins;
+    margin: 0;
 }
 .bottom-menu {
     width: 100%; display: flex; justify-content: space-around;
+    align-items: center;
     position: fixed; bottom: 0px; padding: 30px;
     background-color: var(--blanco); left: 0;
     border-radius: 15px 15px 0;
-    color: var(--pri); height: 120px;
+    color: var(--pri); height: 60px;
+    box-shadow: 0 0 15px rgba(41, 45, 41, 0.2);
+    
 }
 .bottom-menu button {
-    padding: 10px; width: 60px; height: 60px;
+    padding: 10px; width: 50px; height: 50px;
     background: none; border: none;
-    font-size: 1.5rem;
+    font-size: 1rem; color: var(--gris);
 }
 .seleccion {
     background-color: var(--sec) !important;
-    border-radius: 50%; color: var(--blanco);
-    margin-top: -50px;
+    border-radius: 50%; color: var(--blanco) ! important;
+    margin-bottom: 40px;
 }
 .ventana{
     background-color: var(--blanco); width: 80%;
-    margin: 50% auto; padding: 30px;
+    margin: 45px auto; padding: 30px;
     border-radius: 15px;
 }
 .papel {
     background-color: var(--blanco); width: 80%;
-    margin: 30% auto; padding: 30px;
+    margin: 20% auto; padding: 30px;
     border-radius: 15px;
     margin-bottom: 60%;
-}
-.papel {
-    color: var(--pri);
+    color: var(--pri); font-size: 1rem;
 }
 .papel button {
     background-color: var(--pri); color: var(--blanco);
@@ -62,21 +105,23 @@ body {
     border-radius: 15px;
 }
 .item-ticket {
-    padding: 10px; width: 100%;
+    width: 100%;
     margin-bottom: 15px; display: flex;
     justify-content: space-between; align-items: center;
-    font-size: 1rem; 
+    font-size: 0.7rem; 
+    border-bottom: solid 1px var(--gris);
+    padding: 25px 0 25px 0;
 }
 .ventana input {
     background-color: var(--blanco); border: none;
     color: var(--pri); padding: 15px;
-    box-shadow: 0 0 10px rgba(41, 45, 41, 0.212);
+    box-shadow: 0 0 10px rgba(41, 45, 41, 0.1);
     border-radius: 15px; margin: 15px 0;
     width: 100%;
 }
 .ventana button {
     background-color: var(--sec); color: var(--blanco);
-    padding: 15px; font-size: 1.5rem; border: none;
+    padding: 15px; font-size: 1rem; border: none;
     border-radius: 15px; width: 100%;
     margin-top: 15px;
 }
@@ -84,35 +129,65 @@ body {
     color: var(--sec);
     text-align: center
 }
+.aviso {
+    color: var(--gris);
+    font-size: 0.8rem;
+    text-align: center;
+}
 .item-producto {
     background-color: var(--blanco); display: flex;
     flex-direction: column;
-    padding: 20px; border-radius: 15px;
-    justify-content: space-between; align-items: center;
-    margin-top: 20px; font-size: 1.3rem;
+    border-radius: 15px;
+    margin-top: 20px; 
+    font-size: 0.8rem;
+    text-align: left;
+    padding: 20px 20px 5px 20px;
+    width: 100%;
+    box-shadow: 0 0 10px rgba(41, 45, 41, 0.1);
+}
+b {
+    font-size: 1.2rem;
+    color: var(--sec);
 }
 .item-producto button {
-    background-color: var(--sec);
-    color: var(--blanco); padding: 20px;
-    border: none; border-radius: 15px;
-    width: 100%; margin-top: 25px;
-    font-size: 1rem;
+    background-color: var(--blanco);
+    color: var(--sec); padding: 8px;
+    border: solid 2px var(--sec); border-radius: 15px;
+    width: 70%; margin: 15px auto;
+    font-size: 0.8rem;
 }
 .buscador {
     width: 100%; padding: 25px; color: var(--pri);
+    margin-top: -65px;
 }
 #buscador-stock {
     background-color: var(--blanco);
     padding: 15px; margin: 25px auto;
     width: 100%; border: none;
     border-radius: 10px;
+    box-shadow: 0 0 10px rgba(41, 45, 41, 0.1);
 }
 .descuento {
     width: 100%; display: flex; justify-content: space-between;
     align-items: center; color: var(--pri);
-    margin-top: -35px;
+    margin-top: -5px;
+}
+.descuento h3 {
+    font-size: 0.8rem;
 }
 .descuento input {
     background-color: var(--blanco);
-    width: 30%; padding: 15px; border: none;
+    width: 40%; padding: 5px; border: none;
+    border-radius: 15px;
+}
+.cantidad {
+    font-size: 0.8rem;
+    color: var(--gris);
+}
+#total-precio {
+    font-size: 1.2rem;
+}
+.ticket {
+    width: 100%; max-height: 1000px;
+    overflow-y: scroll;
 }
