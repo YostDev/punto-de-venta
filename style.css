@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
 
 :root {
     --pri: #2e3d33;
@@ -96,20 +96,15 @@ body {
     background-color: var(--blanco); width: 80%;
     margin: 20% auto; padding: 30px;
     border-radius: 15px;
-    margin-bottom: 60%;
     color: var(--pri); font-size: 1rem;
 }
-.papel button {
-    background-color: var(--pri); color: var(--blanco);
-    padding: 15px; width: 100%; border: none;
-    border-radius: 15px;
-}
+
 .item-ticket {
     width: 100%;
     margin-bottom: 15px; display: flex;
     justify-content: space-between; align-items: center;
     font-size: 0.7rem; 
-    border-bottom: solid 1px var(--gris);
+    border-bottom: dashed 1px var(--gris);
     padding: 25px 0 25px 0;
 }
 .ventana input {
@@ -186,8 +181,27 @@ b {
 }
 #total-precio {
     font-size: 1.2rem;
+    padding: 15px 0 10px 0;
+    border-top: solid 1px var(--gris);
 }
 .ticket {
     width: 100%; max-height: 1000px;
     overflow-y: scroll;
 }
+.ticket-op-cont {
+    width: 80%;
+    margin: -25px auto;
+    display: flex; align-items: center;
+    justify-content: space-around;
+    border-radius: 15px;
+    margin-bottom: 110px;
+    
+}
+.ticket-op-cont button {
+    background-color: var(--pri); color: var(--blanco);
+    padding: 15px; width: 40%; border: none;
+    border-radius: 15px;
+}
+.desc {
+    background-color: var(--sec) !important;
+    }
