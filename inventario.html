@@ -1,4 +1,4 @@
-<!doctype html>
+    <!doctype html>
 <html lang="es">
 <head>
     <meta charset="utf-8">
@@ -9,54 +9,24 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
-    <div class="ventana">
-        <div class="inputs">
-            <input type="text" id="product-name" placeholder="Nombre del producto">
-            <input type="number" id="product-price" placeholder="Precio del producto">  
-        </div>
-        <button id="add-product-btn">Añadir Producto</button>
-        <h4 class="alerta">
-            Añade un producto a tu inventario 
-        </h4>
+    <div class="titulazo">
+        <h2>Inventario</h2>
     </div>
-
-    <div class="cont-tuto">
-        <div class="paso">
-            <div class="icono">
-                <i class="fa-solid fa-plus"></i>
-            </div>
-            <p>
-                Paso 1: añadir un producto
-            </p>
-        </div>
-        <div class="separador"></div>
-        <div class="paso">
-            <div class="icono">
-                <i class="fa-solid fa-box"></i>
-            </div>
-            <p>
-                Paso 2: ver inventario 
-            </p>
-        </div>
-        <div class="separador"></div>
-        <div class="paso">
-            <div class="icono">
-                <i class="fa-solid fa-ticket"></i>
-            </div>
-            <p>
-                Paso 3: cargar productos al ticket
-            </p>
-        </div>
+    <div class="buscador">
+        <input type="text" id="buscador-stock" placeholder="Buscar producto por nombre...">   
     </div>
-
-
+    
+    <div class="inventario">
+        
+    </div>
+    
     <div class="bottom-menu">
         <a href="inventario.html">
-            <button>
+            <button class="seleccion">
                 <i class="fa-solid fa-box"></i> </button>
         </a>
         <a href="index.html">
-            <button class="seleccion">
+            <button>
                 <i class="fa-solid fa-plus"></i>
             </button>
         </a>
@@ -69,35 +39,21 @@
 
     <script src="jquery.js"></script>
     <script>
-        $('#add-product-btn').on('click', function(e) {
-            e.preventDefault();
+        $('#buscador-stock').on('keyup', function() {
+    let textoBusqueda = $(this).val().toLowerCase();
 
-            let nombre = $('#product-name').val().trim();
-            let precio = parseFloat($('#product-price').val());
+    $('.inventario .item-producto').each(function() {
+        
+        let nombreProducto = $(this).find('span').text().toLowerCase();
 
-            if (!nombre || isNaN(precio)) {
-                $(".alerta").text("Por favor, completa los campos correctamente.");
-                return;
-            }
-
-            let nuevoProducto = {
-                id: Date.now(),
-                nombre: nombre,
-                precio: precio
-            };
-
-            stockProductos.push(nuevoProducto);
-            localStorage.setItem('productos_stock', JSON.stringify(stockProductos));
-
-            $('#product-name').val('');
-            $('#product-price').val('');
-            
-            $(".alerta").text("¡Guardado!");
-            setTimeout(() => {
-                $(".alerta").text("");
-            }, 2000);
-        });
+        
+        if (nombreProducto.indexOf(textoBusqueda) !== -1) {
+            $(this).show();
+        } else {
+            $(this).hide();
+        }
+    });
+});
     </script>
 </body>
-        </html>
-        
+</html>
