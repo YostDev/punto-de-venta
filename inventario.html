@@ -9,23 +9,54 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
-    <h2>Inventario</h2>
-    <div class="buscador">
-        <input type="text" id="buscador-stock" placeholder="Buscar producto por nombre...">   
-        <p class="resultado">Resultados:</p>
+    <div class="ventana">
+        <div class="inputs">
+            <input type="text" id="product-name" placeholder="Nombre del producto">
+            <input type="number" id="product-price" placeholder="Precio del producto">  
+        </div>
+        <button id="add-product-btn">Añadir Producto</button>
+        <h4 class="alerta">
+            Añade un producto a tu inventario 
+        </h4>
     </div>
-    
-    <div class="inventario">
-        
+
+    <div class="cont-tuto">
+        <div class="paso">
+            <div class="icono">
+                <i class="fa-solid fa-plus"></i>
+            </div>
+            <p>
+                Paso 1: añadir un producto
+            </p>
+        </div>
+        <div class="separador"></div>
+        <div class="paso">
+            <div class="icono">
+                <i class="fa-solid fa-box"></i>
+            </div>
+            <p>
+                Paso 2: ver inventario 
+            </p>
+        </div>
+        <div class="separador"></div>
+        <div class="paso">
+            <div class="icono">
+                <i class="fa-solid fa-ticket"></i>
+            </div>
+            <p>
+                Paso 3: cargar productos al ticket
+            </p>
+        </div>
     </div>
-    
+
+
     <div class="bottom-menu">
         <a href="inventario.html">
-            <button class="seleccion">
+            <button>
                 <i class="fa-solid fa-box"></i> </button>
         </a>
         <a href="index.html">
-            <button>
+            <button class="seleccion">
                 <i class="fa-solid fa-plus"></i>
             </button>
         </a>
@@ -38,21 +69,35 @@
 
     <script src="jquery.js"></script>
     <script>
-        $('#buscador-stock').on('keyup', function() {
-    let textoBusqueda = $(this).val().toLowerCase();
+        $('#add-product-btn').on('click', function(e) {
+            e.preventDefault();
 
-    $('.inventario .item-producto').each(function() {
-        
-        let nombreProducto = $(this).find('strong').text().toLowerCase();
+            let nombre = $('#product-name').val().trim();
+            let precio = parseFloat($('#product-price').val());
 
-        
-        if (nombreProducto.indexOf(textoBusqueda) !== -1) {
-            $(this).show();
-        } else {
-            $(this).hide();
-        }
-    });
-});
+            if (!nombre || isNaN(precio)) {
+                $(".alerta").text("Por favor, completa los campos correctamente.");
+                return;
+            }
+
+            let nuevoProducto = {
+                id: Date.now(),
+                nombre: nombre,
+                precio: precio
+            };
+
+            stockProductos.push(nuevoProducto);
+            localStorage.setItem('productos_stock', JSON.stringify(stockProductos));
+
+            $('#product-name').val('');
+            $('#product-price').val('');
+            
+            $(".alerta").text("¡Guardado!");
+            setTimeout(() => {
+                $(".alerta").text("");
+            }, 2000);
+        });
     </script>
 </body>
-</html>
+        </html>
+        
