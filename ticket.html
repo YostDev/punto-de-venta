@@ -9,7 +9,8 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
-    <div class="papel">
+    <div class="papel" id="titi">
+        <h3>¡Gracias!</h3>
         <div class="ticket">
        
         </div>        
@@ -20,8 +21,11 @@
             <input type="number" id="input-descuento" placeholder="Ingrese el descuento">
         </div>
         
-        <h1 id="total-precio"></h1>
+        <h1 id="total-precio"></h1>        
+    </div>
+    <div class="ticket-op-cont">
         <button id="btn-limpiar-ticket">borrar ticket</button>
+        <button id="descargar" class="desc"><i class="fa-solid fa-download"></i> Descargar</button>
     </div>
 
     <div class="bottom-menu">
@@ -41,5 +45,27 @@
         </a>
     </div>
     <script src="jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script>
+        $('#descargar').on('click', function() {
+  let $btn = $(this); // <- guardamos el botón acá
+  
+  html2canvas(document.getElementById('titi')).then(canvas => {
+    let link = document.createElement('a');
+    link.download = 'ticket-venta.png';
+    link.href = canvas.toDataURL();
+    link.click();
+
+    let textoOri = $btn.html(); 
+    $btn.html('<i class="fa-solid fa-check"></i>');
+    $btn.css({ 'background-color': '#376d68', 'color': 'white', 'pointer-events': 'none' });
+    
+    setTimeout(function() {
+      $btn.html(textoOri); // <- usamos $btn en vez de $(this)
+      $btn.css({ 'background-color': '', 'color': '', 'pointer-events': 'auto' });
+    }, 1500); // <- también te faltaba poner el tiempo acá
+  });
+});
+    </script>
 </body>
 </html>
