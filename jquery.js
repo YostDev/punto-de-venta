@@ -15,7 +15,7 @@
             stockProductos.forEach(function(producto) {
                 let estructuraProducto = `
                     <div class="item-producto">
-                        <span><strong>${producto.nombre}</strong> - $${producto.precio.toFixed(2)}</span>
+                        <span>${producto.nombre}<br><b>$${producto.precio.toFixed(2)}</b></span>
                         <button class="btn-añadir" data-id="${producto.id}">Añadir</button>
                     </div>
                 `;
@@ -37,7 +37,7 @@
 
     if (totalFinal < 0) { totalFinal = 0; }
 
-    $('#total-precio').text(totalFinal.toFixed(2));
+    $('#total-precio').text("Total: $" + totalFinal.toFixed(2));
 }
 
 
@@ -52,7 +52,7 @@ $('#input-descuento').on('input', function() {
     let subtotal = 0;
 
     if (listaTicket.length === 0) {
-        $ticket.html('<p>El ticket está vacío.</p>');
+        $ticket.html('<p class="aviso">El ticket está vacío.</p>');
         actualizarPantallaTotales(0);
         return;
     }
@@ -116,3 +116,4 @@ $('#input-descuento').on('input', function() {
             cargarInventario();
             cargarTicket();
         });
+                                    
