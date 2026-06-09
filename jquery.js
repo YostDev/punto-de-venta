@@ -1,28 +1,45 @@
-
-        let stockProductos = JSON.parse(localStorage.getItem('productos_stock')) || [];
+let stockProductos = JSON.parse(localStorage.getItem('productos_stock')) || [];
         let listaTicket = JSON.parse(localStorage.getItem('lista_ticket')) || [];
 
         function cargarInventario() {
-            let $inventario = $('.inventario');
-            $inventario.empty(); 
+    let $inventario = $('.inventario');
+    $inventario.empty(); 
 
-            if (stockProductos.length === 0) {
-                $inventario.html('<p class="aviso">No hay productos en el inventario.</p>');
-                return;
-            }
+    if (stockProductos.length === 0) {
+        $inventario.html('<p class="aviso">No hay productos en el inventario.</p>');
+        return;
+    }
 
-            
-            stockProductos.forEach(function(producto) {
-                let estructuraProducto = `
-                    <div class="item-producto">
-                        <span>${producto.nombre}<br><b>$${producto.precio.toFixed(2)}</b></span>
-                        <button class="btn-añadir" data-id="${producto.id}">Añadir</button>
-                    </div>
-                `;
+    stockProductos.forEach(function(producto) {
+        let estructuraProducto = `
+            <div class="item-producto">
+                <span>${producto.nombre}<br><b>$${producto.precio.toFixed(2)}</b></span>
                 
-                $inventario.append(estructuraProducto);
-            });
-        }
+                <div class="acciones-producto">
+                    <button class="btn-añadir" data-id="${producto.id}"><i class="fa-solid fa-plus"></i></button>
+                    <button class="btn-eliminar" data-id="${producto.id}">
+                        <i class="fa-solid fa-trash"></i>
+                    </button>
+                </div>
+            </div>
+        `;
+        
+        $inventario.append(estructuraProducto);
+    });
+}
+$('.inventario').on('click', '.btn-eliminar', function() {
+    let idProducto = $(this).data('id');
+
+    
+    if(confirm("¿Estás seguro de que querés borrar este producto del stock?")) {
+          
+        stockProductos = stockProductos.filter(producto => producto.id !== idProducto);
+
+        localStorage.setItem('productos_stock', JSON.stringify(stockProductos));
+
+        cargarInventario();
+    }
+});
 
         function actualizarPantallaTotales(subtotal) {
     
@@ -116,4 +133,4 @@ $('#input-descuento').on('input', function() {
             cargarInventario();
             cargarTicket();
         });
-                                    
+                        
