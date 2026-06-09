@@ -1,4 +1,4 @@
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
 
 :root {
     --pri: #2e3d33;
@@ -23,6 +23,17 @@
     color: var(--pri);
     font-size: 0.7rem;
     align-items: center;
+}
+.acciones-producto {
+    display: flex; gap: 15px;
+    align-items: center; justify-content: space-around;
+}
+.btn-eliminar {
+    background-color: var(--pri);
+    color: var(--blanco); padding: 8px;
+    border-radius: 15px;
+    width: 70%; margin: 15px auto;
+    font-size: 0.8rem;
 }
 .icono {
     background-color: var(--pri);
@@ -144,7 +155,7 @@ b {
     font-size: 1.2rem;
     color: var(--sec);
 }
-.item-producto button {
+.btn-añadir {
     background-color: var(--blanco);
     color: var(--sec); padding: 8px;
     border: solid 2px var(--sec); border-radius: 15px;
